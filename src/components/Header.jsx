@@ -1,62 +1,66 @@
-import { useState, useEffect } from 'react';
-import { profile } from '../data/profile';
+import React from 'react';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(window.location.hash || '#hero');
-
+  const [open, setOpen] = React.useState(false);
   const links = [
-    { href: '#about', label: 'Sobre mí' },
-    { href: '#education', label: 'Estudios' },
-    { href: '#certifications', label: 'Certificaciones' },
-    { href: '#experience', label: 'Experiencia' },
-    { href: '#projects', label: 'Proyectos' },
-    { href: '#contact', label: 'Contacto' },
+    { id: 'about', label: 'Sobre mí' },
+    { id: 'education', label: 'Estudios' },
+    { id: 'certifications', label: 'Certificaciones' },
+    { id: 'experience', label: 'Experiencia' },
+    { id: 'projects', label: 'Proyectos' },
+    { id: 'contact', label: 'Contacto' },
   ];
 
-  useEffect(() => {
-    const onHashChange = () => setActive(window.location.hash || '#hero');
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
+  React.useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  React.useEffect(() => {
+    const onResize = () => { if (window.innerWidth >= 768) setOpen(false); };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  const handleNav = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setOpen(false);
+  };
+
   return (
-    <header className="header">
-      <div className="container">
-        <a href="#hero" className="brand">{profile.name}</a>
+    <header className="siteHeader">
+      <div className="brand">Edson Ruiz</div>
 
-        <button
-          className={`menuBtn ${open ? 'open' : ''}`}
-          onClick={() => setOpen(!open)}
-          aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
-          aria-expanded={open}
-          aria-controls="primary-nav"
-        >
-          {open ? '✕' : '☰'}
-        </button>
+      <button
+        className={`menuButton ${open ? 'isOpen' : ''}`}
+        aria-label="Abrir menú"
+        aria-expanded={open}
+        aria-controls="site-nav"
+        onClick={() => setOpen(!open)}
+      >
+        {open ? <FiX className="menuIcon" /> : <FiMenu className="menuIcon" />}
+      </button>
 
-        <div
-          className={`overlay ${open ? 'show' : ''}`}
-          onClick={() => setOpen(false)}
-          aria-hidden={!open}
-        />
+      <nav id="site-nav" className="nav" data-open={open}>
+        <ul className="navList">
+          {links.map((l) => (
+            <li key={l.id}>
+              <button className="navLink" onClick={() => handleNav(l.id)}>
+                {l.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-        <nav id="primary-nav" className={`nav ${open ? 'open' : ''}`}>
-          <ul className="navList">
-            {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className={`navLink ${active === l.href ? 'active' : ''}`}
-                  onClick={() => setOpen(false)}
-                >
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+      {open && <div className="menuOverlay" onClick={() => setOpen(false)} />}
     </header>
   );
 }

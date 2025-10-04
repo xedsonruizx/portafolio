@@ -5,9 +5,11 @@ import { certifications } from '../data/certifications';
 import { experience } from '../data/experience';
 import { projects } from '../data/projects';
 import React from 'react';
+import { FiPhone, FiMail, FiLinkedin, FiGithub } from 'react-icons/fi';
 
 export default function Home() {
   const [certViewer, setCertViewer] = React.useState({ open: false, src: null, title: '' });
+  const waNumber = String(profile.contact?.phone || '').replace(/[^\d]/g, '');
 
   return (
     <main>
@@ -30,15 +32,36 @@ export default function Home() {
       <section id="contact" className="section container">
         <h2 className="sectionTitle">Contacto</h2>
         <ul className="tagList">
-          <li className="tag">Tel: {profile.contact.phone}</li>
           <li className="tag">
-            <a href={`mailto:${profile.contact.email}`} className="link">{profile.contact.email}</a>
+            <a
+              href={`https://wa.me/${waNumber}`}
+              target="_blank"
+              rel="noreferrer"
+              className="link"
+              aria-label="Abrir chat de WhatsApp"
+              title="WhatsApp"
+            >
+              <FiPhone className="contactIcon" />
+              {profile.contact.phone}
+            </a>
           </li>
           <li className="tag">
-            <a href={profile.contact.linkedin} target="_blank" rel="noreferrer" className="link">LinkedIn</a>
+            <a href={`mailto:${profile.contact.email}`} className="link" title="Email">
+              <FiMail className="contactIcon" />
+              {profile.contact.email}
+            </a>
           </li>
           <li className="tag">
-            <a href={profile.contact.github} target="_blank" rel="noreferrer" className="link">GitHub</a>
+            <a href={profile.contact.linkedin} target="_blank" rel="noreferrer" className="link" title="LinkedIn">
+              <FiLinkedin className="contactIcon" />
+              LinkedIn
+            </a>
+          </li>
+          <li className="tag">
+            <a href={profile.contact.github} target="_blank" rel="noreferrer" className="link" title="GitHub">
+              <FiGithub className="contactIcon" />
+              GitHub
+            </a>
           </li>
         </ul>
       </section>

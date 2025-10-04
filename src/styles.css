@@ -13,6 +13,7 @@
 html, body, #root { height: 100%; }
 main{
   padding: 0 20px;
+  padding-top: 64px; /* compensa la altura del header fijo */
 }
 body {
   margin: 0;
@@ -106,13 +107,24 @@ body {
     transform: translateX(110%);
     transition: transform 200ms ease;
   }
-  .nav.open { transform: translateX(0); }
+  .nav[data-open="true"] { 
+    transform: translateX(0);
+    display: block;
+  }
   .navList {
     flex-direction: column; align-items: stretch;
     padding: 12px;
     gap: 6px;
   }
   .navLink { padding: 10px 14px; }
+}
+
+.contactIcon {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  vertical-align: -2px;
+  opacity: 0.9;
 }
 
 /* Hero */
@@ -338,4 +350,115 @@ body {
     width: 96vw;
     height: 88vh;
   }
+}
+.siteHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--header, rgba(17, 24, 39, 0.6));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.menuButton {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+}
+.menuButton .menuIcon {
+  width: 22px;
+  height: 22px;
+  color: var(--text);
+  transition: color 160ms ease;
+}
+.menuButton .menuBar {
+  width: 18px;
+  height: 2px;
+  background: var(--text-dim);
+  margin: 2px 0;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+.menuButton.isOpen .menuBar:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+.menuButton.isOpen .menuBar:nth-child(2) { opacity: 0; }
+.menuButton.isOpen .menuBar:nth-child(3) { transform: translateY(-4px) rotate(-45deg); }
+
+.nav {
+  position: fixed;
+  top: 64px;            /* ajusta si tu header es más alto */
+  right: 16px;
+  width: 220px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  display: none;
+  z-index: 40;
+}
+.nav[data-open="true"] { display: block; }
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.navLink {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.navLink:hover,
+.navLink:focus {
+  background: rgba(255,255,255,0.06);
+}
+
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 35;
+}
+
+/* Vista de escritorio */
+@media (min-width: 768px) {
+  .menuButton { display: none; }
+  .nav {
+    position: static;
+    display: block;
+    width: auto;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  .navList {
+    flex-direction: row;
+    gap: 8px;
+    padding: 0;
+  }
+  .navLink {
+    padding: 8px 12px;
+  }
+  .menuOverlay { display: none; }
 }
