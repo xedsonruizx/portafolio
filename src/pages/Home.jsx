@@ -85,9 +85,11 @@ export default function Home() {
               <h3 className="cardTitle">{x.role} — {x.company}</h3>
               <p className="cardDesc">{x.period}</p>
               <p className="cardDesc">{x.description}</p>
+              <p className="cardDesc"> <a href={x.link} target="_blank" rel="noreferrer">{x.link}</a></p>
             </article>
           ))}
         </div>
+       
       </section>
 
       <Projects />
