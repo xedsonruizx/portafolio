@@ -203,6 +203,16 @@ body {
 .projectsTable tbody tr:hover { background: rgba(255,255,255,0.04); }
 .projectsTable td a.btnSm { white-space: nowrap; }
 
+.projectsTable td.cellAction {
+  text-align: center;
+  vertical-align: middle;
+  padding: 16px;
+}
+
+.projectsTable td.cellAction .btn {
+  margin-top: 5px;
+}
+
 .btnSm { font-size: 13px; padding: 6px 10px; border-radius: 8px; }
 
 .pageNumbers {

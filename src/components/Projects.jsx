@@ -86,8 +86,20 @@ export default function Projects({ items }) {
                   <td>{p.title}</td>
                   <td>{p.description}</td>
                   <td>{(p.tags || []).join(', ')}</td>
-                  <td>{p.link ? <a className="btn primary btnSm" href={p.link} target="_blank" rel="noreferrer">{t('projects.actions.demo')}</a> : '—'}</td>
-                  <td>{p.repo ? <a className="btn btnSm" href={p.repo} target="_blank" rel="noreferrer">{t('projects.actions.code')}</a> : '—'}</td>
+                  <td className="cellAction">
+                  {p.link ? (
+                    <a className="btn primary btnSm" href={p.link} target="_blank" rel="noreferrer">
+                      {t('projects.actions.demo')}
+                    </a>
+                  ) : '—'}
+                </td>
+                <td className="cellAction">
+                  {p.repo ? (
+                    <a className="btn btnSm" href={p.repo} target="_blank" rel="noreferrer">
+                      {t('projects.actions.code')}
+                    </a>
+                  ) : '—'}
+                </td>
                 </tr>
               ))}
             </tbody>

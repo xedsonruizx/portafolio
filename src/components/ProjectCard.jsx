@@ -1,4 +1,7 @@
+import { useI18n } from '../i18n';
+
 export default function ProjectCard({ title, description, tags = [], link, repo, image, features = [] }) {
+  const { t } = useI18n();
   return (
     <article className="card">
       {image && <img className="cardImg" src={image} alt={title} />}
@@ -23,12 +26,12 @@ export default function ProjectCard({ title, description, tags = [], link, repo,
           <div className="cardActions">
             {link && (
               <a className="btn primary" href={link} target="_blank" rel="noreferrer">
-                Demo
+                {t('projects.actions.demo')}
               </a>
             )}
             {repo && (
               <a className="btn" href={repo} target="_blank" rel="noreferrer">
-                Código
+                {t('projects.actions.code')}
               </a>
             )}
           </div>
