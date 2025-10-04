@@ -1,19 +1,22 @@
+import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import { profile } from '../data/profile';
 import { education } from '../data/education';
 import { certifications } from '../data/certifications';
 import { experience } from '../data/experience';
 import { projects } from '../data/projects';
-import React from 'react';
 import { FiPhone, FiMail, FiLinkedin, FiGithub } from 'react-icons/fi';
 import { SiHackerrank } from 'react-icons/si';
+import Projects from '../components/Projects';
 
 export default function Home() {
   const [certViewer, setCertViewer] = React.useState({ open: false, src: null, title: '' });
   const waNumber = String(profile.contact?.phone || '').replace(/[^\d]/g, '');
+  const year = new Date().getFullYear();
 
   return (
-    <main>
+    <>
+      <main>
       <section id="hero" className="hero">
         <div className="container">
           <h1>Hola, soy {profile.name}</h1>
@@ -30,54 +33,7 @@ export default function Home() {
         </p>
       </section>
 
-      <section id="contact" className="section container">
-        <h2 className="sectionTitle">Contacto</h2>
-        <ul className="tagList">
-          <li className="tag">
-            <a
-              href={`https://wa.me/${waNumber}`}
-              target="_blank"
-              rel="noreferrer"
-              className="link"
-              aria-label="Abrir chat de WhatsApp"
-              title="WhatsApp"
-            >
-              <FiPhone className="contactIcon" />
-              {profile.contact.phone}
-            </a>
-          </li>
-          <li className="tag">
-            <a href={`mailto:${profile.contact.email}`} className="link" title="Email">
-              <FiMail className="contactIcon" />
-              {profile.contact.email}
-            </a>
-          </li>
-          <li className="tag">
-            <a href={profile.contact.linkedin} target="_blank" rel="noreferrer" className="link" title="LinkedIn">
-              <FiLinkedin className="contactIcon" />
-              LinkedIn
-            </a>
-          </li>
-          <li className="tag">
-            <a href={profile.contact.github} target="_blank" rel="noreferrer" className="link" title="GitHub">
-              <FiGithub className="contactIcon" />
-              GitHub
-            </a>
-          </li>
-          <li className="tag">
-            <a
-              href={profile.contact.hackerrank}
-              target="_blank"
-              rel="noreferrer"
-              className="link"
-              title="HackerRank"
-            >
-              <SiHackerrank className="contactIcon" />
-              HackerRank
-            </a>
-          </li>
-        </ul>
-      </section>
+
 
       <section id="education" className="section container">
         <h2 className="sectionTitle">Estudios</h2>
@@ -130,14 +86,58 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="section container">
-        <h2 className="sectionTitle">Proyectos</h2>
-        <div className="grid grid-3">
-          {projects.map((p) => (
-            <ProjectCard key={p.title} {...p} />
-          ))}
-        </div>
+      <Projects />
+
+      <section id="contact" className="section container">
+        <h2 className="sectionTitle">Contacto</h2>
+        <ul className="tagList">
+          <li className="tag">
+            <a
+              href={`https://wa.me/${waNumber}`}
+              target="_blank"
+              rel="noreferrer"
+              className="link"
+              aria-label="Abrir chat de WhatsApp"
+              title="WhatsApp"
+            >
+              <FiPhone className="contactIcon" />
+              {profile.contact.phone}
+            </a>
+          </li>
+          <li className="tag">
+            <a href={`mailto:${profile.contact.email}`} className="link" title="Email">
+              <FiMail className="contactIcon" />
+              {profile.contact.email}
+            </a>
+          </li>
+          <li className="tag">
+            <a href={profile.contact.linkedin} target="_blank" rel="noreferrer" className="link" title="LinkedIn">
+              <FiLinkedin className="contactIcon" />
+              LinkedIn
+            </a>
+          </li>
+          <li className="tag">
+            <a href={profile.contact.github} target="_blank" rel="noreferrer" className="link" title="GitHub">
+              <FiGithub className="contactIcon" />
+              GitHub
+            </a>
+          </li>
+          <li className="tag">
+            <a
+              href={profile.contact.hackerrank}
+              target="_blank"
+              rel="noreferrer"
+              className="link"
+              title="HackerRank"
+            >
+              <SiHackerrank className="contactIcon" />
+              HackerRank
+            </a>
+          </li>
+        </ul>
       </section>
+
+
       {certViewer.open && (
         <div className="modalOverlay" onClick={() => setCertViewer({ open: false, src: null, title: '' })}>
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>
@@ -165,5 +165,11 @@ export default function Home() {
         </div>
       )}
     </main>
+      <footer className="siteFooter">
+        <div className="container">
+          <small>© {year} {profile.name}. Todos los derechos reservados.</small>
+        </div>
+      </footer>
+    </>
   );
 }
