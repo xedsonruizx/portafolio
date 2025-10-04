@@ -5,5 +5,6 @@ export const profile = {
     email: 'edsonruizsalinas@gmail.com',
     linkedin: 'https://www.linkedin.com/in/edson-ruiz-salinas',
     github: 'https://github.com/xedsonruizx',
+    hackerrank: 'https://www.hackerrank.com/profile/edsonruizsalinas'
   },
 };

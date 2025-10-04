@@ -6,6 +6,7 @@ import { experience } from '../data/experience';
 import { projects } from '../data/projects';
 import React from 'react';
 import { FiPhone, FiMail, FiLinkedin, FiGithub } from 'react-icons/fi';
+import { SiHackerrank } from 'react-icons/si';
 
 export default function Home() {
   const [certViewer, setCertViewer] = React.useState({ open: false, src: null, title: '' });
@@ -61,6 +62,18 @@ export default function Home() {
             <a href={profile.contact.github} target="_blank" rel="noreferrer" className="link" title="GitHub">
               <FiGithub className="contactIcon" />
               GitHub
+            </a>
+          </li>
+          <li className="tag">
+            <a
+              href={profile.contact.hackerrank}
+              target="_blank"
+              rel="noreferrer"
+              className="link"
+              title="HackerRank"
+            >
+              <SiHackerrank className="contactIcon" />
+              HackerRank
             </a>
           </li>
         </ul>
