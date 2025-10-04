@@ -4,8 +4,11 @@ import { education } from '../data/education';
 import { certifications } from '../data/certifications';
 import { experience } from '../data/experience';
 import { projects } from '../data/projects';
+import React from 'react';
 
 export default function Home() {
+  const [certViewer, setCertViewer] = React.useState({ open: false, src: null, title: '' });
+
   return (
     <main>
       <section id="hero" className="hero">
@@ -56,11 +59,23 @@ export default function Home() {
       <section id="certifications" className="section container">
         <h2 className="sectionTitle">Certificaciones</h2>
         <div className="grid grid-2">
-          {certifications.map((c) => (
-            <article key={c.title} className="card">
-              <h3 className="cardTitle">{c.title}</h3>
-              <p className="cardDesc">{c.institution} — {c.year}</p>
-              {c.description && <p className="cardDesc">{c.description}</p>}
+          {certifications.map((cert) => (
+            <article key={cert.title} className="card">
+              <h3 className="cardTitle">{cert.title}</h3>
+              <p className="cardDesc">{cert.issuer} — {cert.year}</p>
+              <div className="cardBottom">
+                <footer className="cardFooter">
+                  <div className="cardActions">
+                    <button
+                      className="btn primary"
+                      onClick={() => setCertViewer({ open: true, src: cert.pdf, title: cert.title })}
+                      disabled={!cert.pdf}
+                    >
+                      Ver certificado
+                    </button>
+                  </div>
+                </footer>
+              </div>
             </article>
           ))}
         </div>
@@ -87,6 +102,32 @@ export default function Home() {
           ))}
         </div>
       </section>
+      {certViewer.open && (
+        <div className="modalOverlay" onClick={() => setCertViewer({ open: false, src: null, title: '' })}>
+          <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+            <header className="modalHeader">
+              <h3 className="modalTitle">{certViewer.title}</h3>
+              <button
+                className="modalClose"
+                onClick={() => setCertViewer({ open: false, src: null, title: '' })}
+                aria-label="Cerrar visor"
+              >
+                ✕
+              </button>
+            </header>
+            <object
+              className="pdfFrame"
+              data={`${certViewer.src}#toolbar=0&navpanes=0&zoom=page-fit`}
+              type="application/pdf"
+            >
+              <p>
+                Tu navegador no puede mostrar el PDF.{' '}
+                <a href={certViewer.src} target="_blank" rel="noreferrer">Abrir en nueva pestaña</a>
+              </p>
+            </object>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

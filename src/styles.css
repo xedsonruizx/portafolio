@@ -11,6 +11,9 @@
 
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; }
+main{
+  padding: 0 20px;
+}
 body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -45,7 +48,7 @@ body {
 }
 .header .container {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 16px;
+  padding: 24px 16px;
 }
 .brand {
   color: var(--text); text-decoration: none; font-weight: 700; letter-spacing: 0.3px; font-size: 18px;
@@ -134,29 +137,55 @@ body {
 /* Card */
 .card {
   background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
-}
-.card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.18);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
-}
-.cardTitle { margin: 0 0 10px; font-size: 20px; }
-.cardDesc { margin: 0 0 12px; color: var(--muted); }
-
-/* Tags */
-.tagList { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 14px; padding: 0; list-style: none; }
-.tag {
-  font-size: 12px; color: var(--text);
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--border);
-  border-radius: 20px; padding: 6px 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Área de preview del PDF dentro del card */
+.pdfPreview {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1b1b1b;
+  height: min(480px, 48vh); /* suficiente para leer sin romper el layout */
+}
+
+.pdfFrameInline {
+  width: 100%;
+  height: 100%;
+}
+.cardBottom {
+  margin-top: auto; /* Empuja tags + footer al fondo del card */
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 6px; /* pequeño espacio antes del footer */
+  padding: 0;
+  list-style: none;
+}
+
+.cardFooter {
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cardActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* Espaciado de botones dentro del footer */
+.cardActions .btn {
+  margin: 0;
+}
 /* Buttons and Links */
 .btn {
   appearance: none;
@@ -179,3 +208,134 @@ body {
 .btn.primary:hover { filter: brightness(1.06); }
 .link { color: var(--text); text-decoration: none; }
 .link:hover { color: var(--primary); }
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  font-size: 12px;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--text);
+}
+
+.tag:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+}
+/* Imagen dentro de la tarjeta de proyecto */
+.cardImg {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  object-fit: cover;
+  max-height: 180px;
+}
+
+/* Lista de features del proyecto */
+.featureList {
+  margin: 0 0 12px;
+  padding-left: 18px;
+  color: var(--muted);
+}
+.featureList li {
+  margin-bottom: 6px;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* Dentro del modal */
+.modalContent {
+  width: min(1000px, 95vw);
+  height: min(90vh, 860px);
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  flex: 0 0 auto;
+}
+
+.modalToolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.zoomValue { font-size: 13px; opacity: 0.9; }
+
+.pdfViewport {
+  flex: 1 1 auto;
+  overflow: auto;          /* scroll externo */
+  background: #1b1b1b;
+  display: grid;
+  place-content: center;   /* centra el PDF en el modal */
+}
+.pdfScale {
+  width: var(--pdf-w);
+  height: var(--pdf-h);
+  transform-origin: top center; /* escala desde arriba y centrado */
+  will-change: transform;
+}
+.pdfFrame {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #1b1b1b;
+  pointer-events: none;    /* evita scrollbars internas del plugin */
+}
+.modalTitle { font-size: 16px; margin: 0; }
+
+.modalClose {
+  border: 1px solid rgba(255,255,255,0.18);
+  background: transparent;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.pdfFrame {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #1b1b1b;
+  pointer-events: auto; /* permite scroll/barras internas del visor */
+}
+
+@media (max-width: 640px) {
+  .modalContent {
+    width: 96vw;
+    height: 88vh;
+  }
+}

@@ -1,16 +1,14 @@
 export const certifications = [
   {
-    title: 'Certificado Cambridge CAE B2',
-    institution: 'Instituto Británico de Cultura Viña del Mar y Cambridge',
-    year: '2024',
-    description:
-      'Certificado de inglés realizado en diciembre 2023, correspondiente a Certificate in Advanced English (CAE).',
+    title: 'Salesforce Certified Platform Administrator',
+    issuer: 'Salesforce',
+    year: '2023',
+    pdf: '/assets/files/certifications/salesforce-platform-administrator.pdf'
   },
   {
-    title: 'Salesforce Certified Platform Administrator',
-    institution: 'Salesforce',
-    year: '2023',
-    description:
-      'Certificado de Salesforce Certified Platform Administrator, obtenido en noviembre 2023.',
+    title: 'Cambridge CAE B2',
+    issuer: 'Cambridge',
+    year: '2015',
+    pdf: '/assets/files/certifications/cambridge-cae-b2.pdf'
   },
 ];
