@@ -487,6 +487,24 @@ body {
   background: var(--card);
   cursor: pointer;
 }
+
+.langSwitch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  min-width: 42px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  transition: background 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+.langSwitch:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); transform: translateY(-1px); }
 .menuButton .menuIcon {
   width: 22px;
   height: 22px;

@@ -8,3 +8,5 @@ export const profile = {
     hackerrank: 'https://www.hackerrank.com/profile/edsonruizsalinas'
   },
 };
+
+export const profile_en = profile;

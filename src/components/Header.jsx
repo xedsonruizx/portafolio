@@ -1,15 +1,17 @@
 import React from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { useI18n } from '../i18n';
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);
+  const { t, lang, toggleLang } = useI18n();
   const links = [
-    { id: 'about', label: 'Sobre mí' },
-    { id: 'education', label: 'Estudios' },
-    { id: 'certifications', label: 'Certificaciones' },
-    { id: 'experience', label: 'Experiencia' },
-    { id: 'projects', label: 'Proyectos' },
-    { id: 'contact', label: 'Contacto' },
+    { id: 'about', label: t('nav.about') },
+    { id: 'education', label: t('nav.education') },
+    { id: 'certifications', label: t('nav.certifications') },
+    { id: 'experience', label: t('nav.experience') },
+    { id: 'projects', label: t('nav.projects') },
+    { id: 'contact', label: t('nav.contact') },
   ];
 
   React.useEffect(() => {
@@ -38,15 +40,17 @@ export default function Header() {
     <header className="siteHeader">
       <div className="brand">Edson Ruiz</div>
 
-      <button
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <button
         className={`menuButton ${open ? 'isOpen' : ''}`}
-        aria-label="Abrir menú"
+        aria-label={t('header.menu.aria')}
         aria-expanded={open}
         aria-controls="site-nav"
         onClick={() => setOpen(!open)}
       >
         {open ? <FiX className="menuIcon" /> : <FiMenu className="menuIcon" />}
       </button>
+      </div>
 
       <nav id="site-nav" className="nav" data-open={open}>
         <ul className="navList">
@@ -59,7 +63,14 @@ export default function Header() {
           ))}
         </ul>
       </nav>
-
+   <button
+          className="langSwitch"
+          onClick={toggleLang}
+          aria-label={t('header.lang.label')}
+          title={t('header.lang.label')}
+        >
+          {lang.toUpperCase()}
+        </button>
       {open && <div className="menuOverlay" onClick={() => setOpen(false)} />}
     </header>
   );

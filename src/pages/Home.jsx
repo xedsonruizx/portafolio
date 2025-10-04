@@ -1,15 +1,22 @@
-import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import { profile } from '../data/profile';
-import { education } from '../data/education';
-import { certifications } from '../data/certifications';
-import { experience } from '../data/experience';
+import { education, education_en } from '../data/education';
+import { certifications, certifications_en } from '../data/certifications';
+import { experience, experience_en } from '../data/experience';
 import { projects } from '../data/projects';
+import React from 'react';
 import { FiPhone, FiMail, FiLinkedin, FiGithub } from 'react-icons/fi';
 import { SiHackerrank } from 'react-icons/si';
 import Projects from '../components/Projects';
+import { useI18n } from '../i18n';
 
 export default function Home() {
+  const { t, lang } = useI18n();
+
+  // Select language-specific datasets
+  const eduData = lang === 'en' ? education_en : education;
+  const certData = lang === 'en' ? certifications_en : certifications;
+  const expData = lang === 'en' ? experience_en : experience;
   const [certViewer, setCertViewer] = React.useState({ open: false, src: null, title: '' });
   const waNumber = String(profile.contact?.phone || '').replace(/[^\d]/g, '');
   const year = new Date().getFullYear();
@@ -19,26 +26,23 @@ export default function Home() {
       <main>
       <section id="hero" className="hero">
         <div className="container">
-          <h1>Hola, soy {profile.name}</h1>
-          <p>Desarrollador Web y Administrador de Salesforce.</p>
-          <a href="#projects" className="btn primary">Ver proyectos</a>
+          <h1>{t('hero.title', { name: profile.name })}</h1>
+          <p>{t('hero.subtitle')}</p>
+          <a href="#projects" className="btn primary">{t('hero.cta')}</a>
         </div>
       </section>
 
       <section id="about" className="section container">
-        <h2 className="sectionTitle">Sobre mí</h2>
-        <p>
-          Técnico Universitario en Informática con experiencia en desarrollo web, administración de Salesforce
-          y colaboración multidisciplinaria con equipos y clientes.
-        </p>
+        <h2 className="sectionTitle">{t('about.title')}</h2>
+        <p>{t('about.description')}</p>
       </section>
 
 
 
       <section id="education" className="section container">
-        <h2 className="sectionTitle">Estudios</h2>
+        <h2 className="sectionTitle">{t('education.title')}</h2>
         <div className="grid grid-2">
-          {education.map((e) => (
+          {eduData.map((e) => (
             <article key={e.title} className="card">
               <h3 className="cardTitle">{e.title}</h3>
               <p className="cardDesc">{e.institution} — {e.year}</p>
@@ -49,9 +53,9 @@ export default function Home() {
       </section>
 
       <section id="certifications" className="section container">
-        <h2 className="sectionTitle">Certificaciones</h2>
+        <h2 className="sectionTitle">{t('certifications.title')}</h2>
         <div className="grid grid-2">
-          {certifications.map((cert) => (
+          {certData.map((cert) => (
             <article key={cert.title} className="card">
               <h3 className="cardTitle">{cert.title}</h3>
               <p className="cardDesc">{cert.issuer} — {cert.year}</p>
@@ -63,7 +67,7 @@ export default function Home() {
                       onClick={() => setCertViewer({ open: true, src: cert.pdf, title: cert.title })}
                       disabled={!cert.pdf}
                     >
-                      Ver certificado
+                      {t('certifications.viewLabel')}
                     </button>
                   </div>
                 </footer>
@@ -74,9 +78,9 @@ export default function Home() {
       </section>
 
       <section id="experience" className="section container">
-        <h2 className="sectionTitle">Experiencia</h2>
+        <h2 className="sectionTitle">{t('experience.title')}</h2>
         <div className="grid grid-2">
-          {experience.map((x) => (
+          {expData.map((x) => (
             <article key={x.role} className="card">
               <h3 className="cardTitle">{x.role} — {x.company}</h3>
               <p className="cardDesc">{x.period}</p>
@@ -89,7 +93,7 @@ export default function Home() {
       <Projects />
 
       <section id="contact" className="section container">
-        <h2 className="sectionTitle">Contacto</h2>
+        <h2 className="sectionTitle">{t('contact.title')}</h2>
         <ul className="tagList">
           <li className="tag">
             <a
@@ -97,7 +101,7 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
               className="link"
-              aria-label="Abrir chat de WhatsApp"
+              aria-label={t('contact.whatsapp')}
               title="WhatsApp"
             >
               <FiPhone className="contactIcon" />
@@ -146,7 +150,7 @@ export default function Home() {
               <button
                 className="modalClose"
                 onClick={() => setCertViewer({ open: false, src: null, title: '' })}
-                aria-label="Cerrar visor"
+                aria-label={t('modal.closeAria')}
               >
                 ✕
               </button>
@@ -157,8 +161,8 @@ export default function Home() {
               type="application/pdf"
             >
               <p>
-                Tu navegador no puede mostrar el PDF.{' '}
-                <a href={certViewer.src} target="_blank" rel="noreferrer">Abrir en nueva pestaña</a>
+                {t('pdf.fallback')}{' '}
+                <a href={certViewer.src} target="_blank" rel="noreferrer">{t('pdf.openNew')}</a>
               </p>
             </object>
           </div>
