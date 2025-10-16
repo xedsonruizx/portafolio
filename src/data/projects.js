@@ -11,7 +11,7 @@ export const projects = [
     title: 'Card Product',
     description: 'Carrusel en JavaScript Vanilla con controles básicos y animación.',
     tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/Product-preview-card-component/',
+    link: 'https://xedsonruizx.github.io/Product-preview-card-component',
     repo: 'https://github.com/xedsonruizx/Product-preview-card-component"',
     image: '/assets/images/proyects/secondChallenge.png',
 
@@ -91,7 +91,7 @@ export const projects_en = [
     title: 'Card Product',
     description: 'Vanilla JavaScript carousel with basic controls and animation.',
     tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/Product-preview-card-component/',
+    link: 'https://xedsonruizx.github.io/Product-preview-card-component',
     repo: 'https://github.com/xedsonruizx/Product-preview-card-component"',
     image: '/assets/images/proyects/secondChallenge.png',
 
