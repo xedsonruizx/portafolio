@@ -81,7 +81,7 @@ export const projects = [
   },
   {
     title: 'Asesorias - en desarrollo',
-    description: 'Proyecto en desarrollo.',
+    description: 'Proyecto en desarrollo. Aplicación web para gestionar asesorías, administracion de usuarios, roles de usuario, formularios dinamicos, biblioteca, preguntas frecuentes y posts.',
     tags: ['Vue js', 'Php', 'Laravel'],
     image: '/assets/images/proyects/vuesjs/asesorias yg.png',
     repo: 'https://github.com/xedsonruizx/Asesoria-YG/tree/Inicio-de-proyecto-laravel',
@@ -171,8 +171,8 @@ export const projects_en = [
   },
   {
     title: 'Asesorias - in development',
-    description: 'Project in development.',
-    tags: ['Vue js', 'Php', 'Laravel'],
+    description: 'Project in development. Web application to manage consultations, user administration, user roles, dynamic forms, library, FAQs, and posts.',
+    tags: ['Vue.js', 'PHP', 'Laravel'],
     image: '/assets/images/proyects/vuesjs/asesorias yg.png',
     repo: 'https://github.com/xedsonruizx/Asesoria-YG/tree/Inicio-de-proyecto-laravel',
     priority: 1
