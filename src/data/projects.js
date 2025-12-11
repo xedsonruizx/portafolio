@@ -5,7 +5,8 @@ export const projects = [
     tags: ['HTML', 'CSS'],
     link: 'https://xedsonruizx.github.io/QrChallenge/',
     repo: 'https://github.com/xedsonruizx/QrChallenge/tree/QR',
-    image: '/assets/images/proyects/qr.png'
+    image: '/assets/images/proyects/qr.png',
+    priority: 0
   },
   {
     title: 'Card Product',
@@ -14,10 +15,10 @@ export const projects = [
     link: 'https://xedsonruizx.github.io/Product-preview-card-component',
     repo: 'https://github.com/xedsonruizx/Product-preview-card-component"',
     image: '/assets/images/proyects/secondChallenge.png',
-
+    priority: 0
   },
 
-    {
+  {
     title: 'Card Summary',
     description: 'Card de resultados del desafío de Frontend Mentor.',
     tags: ['HTML', 'CSS', 'FontAwesome'],
@@ -75,7 +76,16 @@ export const projects = [
     tags: ['HTML', 'CSS Grid'],
     link: 'https://xedsonruizx.github.io/Lading-Single-Section/',
     repo: 'https://github.com/xedsonruizx/Lading-Single-Section/tree/First-version',
-    image: '/assets/images/proyects/landing-page.png'
+    image: '/assets/images/proyects/landing-page.png',
+    priority: 0
+  },
+  {
+    title: 'Asesorias - en desarrollo',
+    description: 'Proyecto en desarrollo.',
+    tags: ['Vue js', 'Php', 'Laravel'],
+    image: '/assets/images/proyects/vuesjs/asesorias yg.png',
+    repo: 'https://github.com/xedsonruizx/Asesoria-YG/tree/Inicio-de-proyecto-laravel',
+    priority: 1
   },
 ];
 export const projects_en = [
@@ -85,7 +95,8 @@ export const projects_en = [
     tags: ['HTML', 'CSS'],
     link: 'https://xedsonruizx.github.io/QrChallenge/',
     repo: 'https://github.com/xedsonruizx/QrChallenge/tree/QR',
-    image: '/assets/images/proyects/qr.png'
+    image: '/assets/images/proyects/qr.png',
+    priority: 0
   },
   {
     title: 'Card Product',
@@ -94,7 +105,7 @@ export const projects_en = [
     link: 'https://xedsonruizx.github.io/Product-preview-card-component',
     repo: 'https://github.com/xedsonruizx/Product-preview-card-component"',
     image: '/assets/images/proyects/secondChallenge.png',
-
+    priority: 0
   },
 
   {
@@ -155,6 +166,15 @@ export const projects_en = [
     tags: ['HTML', 'CSS Grid'],
     link: 'https://xedsonruizx.github.io/Lading-Single-Section/',
     repo: 'https://github.com/xedsonruizx/Lading-Single-Section/tree/First-version',
-    image: '/assets/images/proyects/landing-page.png'
+    image: '/assets/images/proyects/landing-page.png',
+    priority: 0
+  },
+  {
+    title: 'Asesorias - in development',
+    description: 'Project in development.',
+    tags: ['Vue js', 'Php', 'Laravel'],
+    image: '/assets/images/proyects/vuesjs/asesorias yg.png',
+    repo: 'https://github.com/xedsonruizx/Asesoria-YG/tree/Inicio-de-proyecto-laravel',
+    priority: 1
   },
 ];

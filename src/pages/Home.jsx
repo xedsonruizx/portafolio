@@ -8,6 +8,7 @@ import React from 'react';
 import { FiPhone, FiMail, FiLinkedin, FiGithub } from 'react-icons/fi';
 import { SiHackerrank } from 'react-icons/si';
 import Projects from '../components/Projects';
+import Courses from '../components/Courses';
 import { useI18n } from '../i18n';
 
 export default function Home() {
@@ -52,31 +53,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="certifications" className="section container">
-        <h2 className="sectionTitle">{t('certifications.title')}</h2>
-        <div className="grid grid-2">
-          {certData.map((cert) => (
-            <article key={cert.title} className="card">
-              <h3 className="cardTitle">{cert.title}</h3>
-              <p className="cardDesc">{cert.issuer} — {cert.year}</p>
-              <div className="cardBottom">
-                <footer className="cardFooter">
-                  <div className="cardActions">
-                    <button
-                      className="btn primary"
-                      onClick={() => setCertViewer({ open: true, src: cert.pdf, title: cert.title })}
-                      disabled={!cert.pdf}
-                    >
-                      {t('certifications.viewLabel')}
-                    </button>
-                  </div>
-                </footer>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section id="experience" className="section container">
         <h2 className="sectionTitle">{t('experience.title')}</h2>
         <div className="grid grid-2">
@@ -91,6 +67,41 @@ export default function Home() {
         </div>
        
       </section>
+
+
+
+
+      <section id="certifications" className="section container">
+        <h2 className="sectionTitle">{t('certifications.title')}</h2>
+        <div className="grid grid-2">
+          {certData.map((cert) => (
+            <article key={cert.title} className="card">
+              <h3 className="cardTitle">{cert.title}</h3>
+              <p className="cardDesc">{cert.issuer} — {cert.year}</p>
+              <div className="cardBottom">
+                <footer className="cardFooter">
+                  <div className="cardActions">
+                    {cert.pdf ? (
+                      <a
+                        className="btn primary btnSm"
+                        href={cert.pdf}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {t('certifications.viewLabel')}
+                      </a>
+                    ) : '—'}
+                  </div>
+                </footer>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <Courses />
+
+
 
       <Projects />
 

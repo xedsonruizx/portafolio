@@ -12,16 +12,23 @@ export default function Projects({ items }) {
   // Choose dataset based on language, unless items were provided via props
   const sourceItems = items ?? (lang === 'en' ? projects_en : projects_es);
 
-  const PAGE_SIZE = 6;
-  const totalPages = Math.ceil(sourceItems.length / PAGE_SIZE);
-  const start = (page - 1) * PAGE_SIZE;
-  const visible = sourceItems.slice(start, start + PAGE_SIZE);
+  // Ordena por prioridad (mayor primero). Si no hay prioridad, usa 0.
+  const sortedItems = React.useMemo(
+    () => [...sourceItems].sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0)),
+    [sourceItems]
+  );
 
-  React.useEffect(() => { setPage(1); }, [view, sourceItems]);
+  const PAGE_SIZE = 6;
+  const totalPages = Math.ceil(sortedItems.length / PAGE_SIZE);
+  const start = (page - 1) * PAGE_SIZE;
+  const visible = sortedItems.slice(start, start + PAGE_SIZE);
+
+  React.useEffect(() => { setPage(1); }, [view, sortedItems]);
 
   return (
     <section id="projects" className="section container">
       <h2 className="sectionTitle">{t('projects.title')}</h2>
+      <p>{t('projects.description')}</p>
 
       <div className="sectionToolbar">
         <div className="viewToggle">
