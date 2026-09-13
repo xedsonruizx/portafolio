@@ -27,8 +27,11 @@ export default function Projects({ items }) {
 
   return (
     <section id="projects" className="section container">
-      <h2 className="sectionTitle">{t('projects.title')}</h2>
-      <p>{t('projects.description')}</p>
+      <h2 className="sectionTitle">
+        <span className="sectionNum">06.</span>
+        {t('projects.title')}
+      </h2>
+      <p style={{ color: 'var(--text-dim)', marginBottom: '28px', marginTop: '-20px', fontSize: '15px' }}>{t('projects.description')}</p>
 
       <div className="sectionToolbar">
         <div className="viewToggle">
@@ -71,8 +74,8 @@ export default function Projects({ items }) {
 
       {view === 'cards' ? (
         <div className="grid grid-3">
-          {visible.map((p) => (
-            <ProjectCard key={p.title} {...p} />
+          {visible.map((p, i) => (
+            <ProjectCard key={i} {...p} />
           ))}
         </div>
       ) : (
@@ -88,8 +91,8 @@ export default function Projects({ items }) {
               </tr>
             </thead>
             <tbody>
-              {visible.map((p) => (
-                <tr key={p.title}>
+              {visible.map((p, i) => (
+                <tr key={i}>
                   <td>{p.title}</td>
                   <td>{p.description}</td>
                   <td>{(p.tags || []).join(', ')}</td>

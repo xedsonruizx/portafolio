@@ -13,6 +13,13 @@ export const education = [
     description:
       'Título técnico nivel medio en administración de empresas.',
   },
+  {
+    title: 'Idioma Inglés — Certificación B2',
+    institution: 'Instituto Chileno Británico de Cultura',
+    year: '2021-2024',
+    description:
+      'Formación en inglés desde nivel básico hasta Intermedio-Alto, certificándose en nivel B2 (Cambridge Advanced English — Intermedio-Avanzado, oral y escrito).',
+  },
 ];
 
 export const education_en = [
@@ -29,5 +36,12 @@ export const education_en = [
     year: '2013-2016',
     description:
       'Mid-level technical degree in Business Administration.',
+  },
+  {
+    title: 'English Language — B2 Certification',
+    institution: 'Instituto Chileno Británico de Cultura',
+    year: '2021-2024',
+    description:
+      'English training from beginner to Upper-Intermediate level, achieving B2 certification (Cambridge Advanced English — Upper-Intermediate, oral and written).',
   },
 ];

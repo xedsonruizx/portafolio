@@ -1,160 +1,227 @@
-import ProjectCard from '../components/ProjectCard';
 import { profile } from '../data/profile';
 import { education, education_en } from '../data/education';
 import { certifications, certifications_en } from '../data/certifications';
 import { experience, experience_en } from '../data/experience';
-import { projects } from '../data/projects';
 import React from 'react';
-import { FiPhone, FiMail, FiLinkedin, FiGithub } from 'react-icons/fi';
+import { FiPhone, FiMail, FiLinkedin, FiGithub, FiDownload } from 'react-icons/fi';
 import { SiHackerrank } from 'react-icons/si';
 import Projects from '../components/Projects';
 import Courses from '../components/Courses';
+import TypingText from '../components/TypingText';
 import { useI18n } from '../i18n';
+import { useReveal } from '../hooks/useReveal';
+
+const SKILLS = {
+  frontend:  ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'Vue.js', 'React.js', 'Bootstrap', 'WordPress'],
+  backend:   ['PHP', 'Laravel', 'Python', 'NestJS', 'Node.js', 'Java', 'COBOL', 'REST APIs'],
+  databases: ['MySQL', 'SQL', 'Oracle SQL', 'PostgreSQL'],
+  tools:     ['Git', 'Docker', 'Jira', 'Trello', 'Salesforce', 'Scrum / Agile'],
+};
 
 export default function Home() {
   const { t, lang } = useI18n();
+  useReveal();
 
-  // Select language-specific datasets
-  const eduData = lang === 'en' ? education_en : education;
+  const eduData  = lang === 'en' ? education_en  : education;
   const certData = lang === 'en' ? certifications_en : certifications;
-  const expData = lang === 'en' ? experience_en : experience;
+  const expData  = lang === 'en' ? experience_en  : experience;
+
   const [certViewer, setCertViewer] = React.useState({ open: false, src: null, title: '' });
   const waNumber = String(profile.contact?.phone || '').replace(/[^\d]/g, '');
   const year = new Date().getFullYear();
 
+  const contacts = [
+    { href: `https://wa.me/${waNumber}`,        icon: <FiPhone />,      label: profile.contact.phone,  title: 'WhatsApp' },
+    { href: `mailto:${profile.contact.email}`,  icon: <FiMail />,       label: profile.contact.email,  title: 'Email' },
+    { href: profile.contact.linkedin,           icon: <FiLinkedin />,   label: 'LinkedIn',             title: 'LinkedIn' },
+    { href: profile.contact.github,             icon: <FiGithub />,     label: 'GitHub',               title: 'GitHub' },
+    { href: profile.contact.hackerrank,         icon: <SiHackerrank />, label: 'HackerRank',           title: 'HackerRank' },
+  ];
+
   return (
     <>
       <main>
-      <section id="hero" className="hero">
-        <div className="container">
-          <h1>{t('hero.title', { name: profile.name })}</h1>
-          <p>{t('hero.subtitle')}</p>
-          <a href="#projects" className="btn primary">{t('hero.cta')}</a>
-        </div>
-      </section>
+        {/* ── HERO ─────────────────────────────────── */}
+        <section id="hero" className="hero">
+          <div className="container">
+            <p className="heroGreet">{t('hero.greet')}</p>
+            <h1 className="heroName">{profile.name}.</h1>
+            <h2 className="heroRole">
+              <TypingText lang={lang} />
+            </h2>
+            <p className="heroDesc">{t('about.description')}</p>
+            <div className="heroCtas">
+              <a href="#projects" className="btn primary">{t('hero.cta')}</a>
+              <a href="#contact"  className="btn secondary">{t('hero.ctaSecondary')}</a>
+              <a
+                href="/assets/files/CV_Edson_Ruiz_ESP.pdf"
+                download
+                className="btn secondary"
+              >
+                <FiDownload style={{ width: 16, height: 16 }} />
+                {t('hero.downloadCv')}
+              </a>
+            </div>
+          </div>
+        </section>
 
-      <section id="about" className="section container">
-        <h2 className="sectionTitle">{t('about.title')}</h2>
-        <p>{t('about.description')}</p>
-      </section>
+        {/* ── EDUCATION ────────────────────────────── */}
+        <section id="education" className="section container">
+          <h2 className="sectionTitle reveal">
+            <span className="sectionNum">01.</span>
+            {t('education.title')}
+          </h2>
+          <div className="grid grid-2">
+            {eduData.map((e, i) => (
+              <article
+                key={i}
+                className="card reveal"
+                style={{ '--reveal-delay': `${i * 120}ms` }}
+              >
+                <h3 className="cardTitle">{e.title}</h3>
+                <p className="cardDesc">{e.institution} — {e.year}</p>
+                <p className="cardDesc">{e.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
-
-
-      <section id="education" className="section container">
-        <h2 className="sectionTitle">{t('education.title')}</h2>
-        <div className="grid grid-2">
-          {eduData.map((e) => (
-            <article key={e.title} className="card">
-              <h3 className="cardTitle">{e.title}</h3>
-              <p className="cardDesc">{e.institution} — {e.year}</p>
-              <p className="cardDesc">{e.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="experience" className="section container">
-        <h2 className="sectionTitle">{t('experience.title')}</h2>
-        <div className="grid grid-2">
-          {expData.map((x) => (
-            <article key={x.role} className="card">
-              <h3 className="cardTitle">{x.role} — {x.company}</h3>
-              <p className="cardDesc">{x.period}</p>
-              <p className="cardDesc">{x.description}</p>
-              <p className="cardDesc"> <a href={x.link} target="_blank" rel="noreferrer">{x.link}</a></p>
-            </article>
-          ))}
-        </div>
-       
-      </section>
-
-
-
-
-      <section id="certifications" className="section container">
-        <h2 className="sectionTitle">{t('certifications.title')}</h2>
-        <div className="grid grid-2">
-          {certData.map((cert) => (
-            <article key={cert.title} className="card">
-              <h3 className="cardTitle">{cert.title}</h3>
-              <p className="cardDesc">{cert.issuer} — {cert.year}</p>
-              <div className="cardBottom">
-                <footer className="cardFooter">
-                  <div className="cardActions">
-                    {cert.pdf ? (
-                      <a
-                        className="btn primary btnSm"
-                        href={cert.pdf}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {t('certifications.viewLabel')}
-                      </a>
-                    ) : '—'}
+        {/* ── EXPERIENCE ───────────────────────────── */}
+        <section id="experience" className="section container">
+          <h2 className="sectionTitle reveal">
+            <span className="sectionNum">02.</span>
+            {t('experience.title')}
+          </h2>
+          <div className="timeline">
+            {expData.map((x, i) => (
+              <div
+                key={i}
+                className="timelineItem reveal"
+                style={{ '--reveal-delay': `${i * 140}ms` }}
+              >
+                <div className="timelineMarker" />
+                <article className="card timelineContent">
+                  <div className="timelineHeader">
+                    <h3 className="cardTitle">{x.role}</h3>
+                    <span className="timelinePeriod">{x.period}</span>
                   </div>
-                </footer>
+                  <p className="timelineCompany">
+                    {x.link
+                      ? <a href={x.link} target="_blank" rel="noreferrer" className="link">{x.company}</a>
+                      : <span>{x.company}</span>
+                    }
+                  </p>
+                  {x.bullets?.length > 0 ? (
+                    <ul className="expBullets">
+                      {x.bullets.map((b, j) => <li key={j}>{b}</li>)}
+                    </ul>
+                  ) : (
+                    <p className="cardDesc">{x.description}</p>
+                  )}
+                </article>
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
 
-      <Courses />
+        {/* ── SKILLS ───────────────────────────────── */}
+        <section id="skills" className="section container">
+          <h2 className="sectionTitle reveal">
+            <span className="sectionNum">03.</span>
+            {t('skills.title')}
+          </h2>
+          <div className="skillsGrid">
+            {Object.entries(SKILLS).map(([cat, items], i) => (
+              <div
+                key={cat}
+                className="skillGroup reveal"
+                style={{ '--reveal-delay': `${i * 90}ms` }}
+              >
+                <h3 className="skillGroupTitle">{t(`skills.categories.${cat}`)}</h3>
+                <ul className="tagList">
+                  {items.map((skill) => (
+                    <li key={skill} className="tag skill">{skill}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
 
+        {/* ── CERTIFICATIONS ───────────────────────── */}
+        <section id="certifications" className="section container">
+          <h2 className="sectionTitle reveal">
+            <span className="sectionNum">04.</span>
+            {t('certifications.title')}
+          </h2>
+          <div className="grid grid-2">
+            {certData.map((cert, i) => (
+              <article
+                key={i}
+                className="card reveal"
+                style={{ '--reveal-delay': `${i * 80}ms` }}
+              >
+                <h3 className="cardTitle">{cert.title}</h3>
+                <p className="cardDesc">{cert.issuer} — {cert.year}</p>
+                <div className="cardBottom">
+                  <footer className="cardFooter">
+                    <div className="cardActions">
+                      {cert.pdf ? (
+                        <a
+                          className="btn primary btnSm"
+                          href={cert.pdf}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t('certifications.viewLabel')}
+                        </a>
+                      ) : '—'}
+                    </div>
+                  </footer>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
+        {/* ── COURSES ──────────────────────────────── */}
+        <Courses />
 
-      <Projects />
+        {/* ── PROJECTS ─────────────────────────────── */}
+        <Projects />
 
-      <section id="contact" className="section container">
-        <h2 className="sectionTitle">{t('contact.title')}</h2>
-        <ul className="tagList">
-          <li className="tag">
-            <a
-              href={`https://wa.me/${waNumber}`}
-              target="_blank"
-              rel="noreferrer"
-              className="link"
-              aria-label={t('contact.whatsapp')}
-              title="WhatsApp"
-            >
-              <FiPhone className="contactIcon" />
-              {profile.contact.phone}
-            </a>
-          </li>
-          <li className="tag">
-            <a href={`mailto:${profile.contact.email}`} className="link" title="Email">
-              <FiMail className="contactIcon" />
-              {profile.contact.email}
-            </a>
-          </li>
-          <li className="tag">
-            <a href={profile.contact.linkedin} target="_blank" rel="noreferrer" className="link" title="LinkedIn">
-              <FiLinkedin className="contactIcon" />
-              LinkedIn
-            </a>
-          </li>
-          <li className="tag">
-            <a href={profile.contact.github} target="_blank" rel="noreferrer" className="link" title="GitHub">
-              <FiGithub className="contactIcon" />
-              GitHub
-            </a>
-          </li>
-          <li className="tag">
-            <a
-              href={profile.contact.hackerrank}
-              target="_blank"
-              rel="noreferrer"
-              className="link"
-              title="HackerRank"
-            >
-              <SiHackerrank className="contactIcon" />
-              HackerRank
-            </a>
-          </li>
-        </ul>
-      </section>
+        {/* ── CONTACT ──────────────────────────────── */}
+        <section id="contact" className="section container">
+          <h2 className="sectionTitle reveal">
+            <span className="sectionNum">06.</span>
+            {t('contact.title')}
+          </h2>
+          <p className="contactLead reveal" style={{ '--reveal-delay': '80ms' }}>
+            {t('contact.description')}
+          </p>
+          <div className="contactGrid">
+            {contacts.map((c, i) => (
+              <a
+                key={c.title}
+                href={c.href}
+                target={c.href.startsWith('mailto') ? undefined : '_blank'}
+                rel="noreferrer"
+                className="contactCard reveal"
+                style={{ '--reveal-delay': `${i * 70}ms` }}
+                title={c.title}
+              >
+                <span className="contactCardIcon">{c.icon}</span>
+                <span className="contactCardText">
+                  <span className="contactCardTitle">{c.title}</span>
+                  <span className="contactCardLabel">{c.label}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      </main>
 
-
+      {/* ── CERT MODAL ───────────────────────────── */}
       {certViewer.open && (
         <div className="modalOverlay" onClick={() => setCertViewer({ open: false, src: null, title: '' })}>
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>
@@ -174,17 +241,18 @@ export default function Home() {
               type="application/pdf"
             >
               <p>
-                {t('pdf.fallback')}{' '}
                 <a href={certViewer.src} target="_blank" rel="noreferrer">{t('pdf.openNew')}</a>
               </p>
             </object>
           </div>
         </div>
       )}
-    </main>
+
+      {/* ── FOOTER ───────────────────────────────── */}
       <footer className="siteFooter">
         <div className="container">
-          <small>© {year} {profile.name}. Todos los derechos reservados.</small>
+          <small>© {year} <span className="footerAccent">{profile.name}</span></small>
+          <small>{t('footer.rights')}</small>
         </div>
       </footer>
     </>

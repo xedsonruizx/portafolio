@@ -1,85 +1,5 @@
 export const projects = [
   {
-    title: 'QR challenge HTML + CSS',
-    description: 'Componente de código QR construido con HTML y CSS, siguiendo el desafío de Frontend Mentor.',
-    tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/QrChallenge/',
-    repo: 'https://github.com/xedsonruizx/QrChallenge/tree/QR',
-    image: '/assets/images/proyects/qr.png',
-    priority: 0
-  },
-  {
-    title: 'Card Product',
-    description: 'Carrusel en JavaScript Vanilla con controles básicos y animación.',
-    tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/Product-preview-card-component',
-    repo: 'https://github.com/xedsonruizx/Product-preview-card-component"',
-    image: '/assets/images/proyects/secondChallenge.png',
-    priority: 0
-  },
-
-  {
-    title: 'Card Summary',
-    description: 'Card de resultados del desafío de Frontend Mentor.',
-    tags: ['HTML', 'CSS', 'FontAwesome'],
-    link: 'https://xedsonruizx.github.io/results-summary-challenge-3/',
-    repo: 'https://github.com/xedsonruizx/results-summary-challenge-3',
-    image: '/assets/images/proyects/result-summary.png',
-    features: []
-  },
-      {
-    title: 'NTF Card with hover animation',
-    description: 'Card del desafío de Frontend Mentor con animación de hover en la imagen.',
-    tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/NFT-preview-card-component/',
-    repo: 'https://github.com/xedsonruizx/NFT-preview-card-component',
-    image: '/assets/images/proyects/ntf-card.png',
-    features: []
-  },
-  {
-    title: 'Order-Card',
-    description: 'Card del desafío de Frontend Mentor animacion de hover en boton',
-    tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/Order-summary-component/',
-    repo: 'https://github.com/xedsonruizx/Order-summary-component',
-    image: '/assets/images/proyects/music.png',
-    features: []
-  },
-    {
-    title: '3 Columns Card',
-    description: 'Card de 3 columnas responsivas del desafío de Frontend Mentor.',
-    tags: ['HTML', 'CSS Flex box'],
-    link: 'https://xedsonruizx.github.io/3-column-preview-card-component/',
-    repo: 'https://github.com/xedsonruizx/3-column-preview-card-component',
-    image: '/assets/images/proyects/3-cols-card.png',
-    features: []
-  },
-  {
-    title: 'Profile card with double background',
-    description: 'Card de perfil con dos fondos responsivos del desafío de Frontend Mentor.',
-    tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/Profile-card-component/',
-    repo: 'https://github.com/xedsonruizx/Profile-card-component',
-    image: '/assets/images/proyects/profile-card.png'
-  },
-  {
-    title: 'Grid card with order',
-    description: 'Card de estadísticas con dos fondos responsivos del desafío de Frontend Mentor.',
-    tags: ['HTML', 'CSS Grid'],
-    link: 'https://xedsonruizx.github.io/Stats-preview-card-component/',
-    repo: 'https://github.com/xedsonruizx/Stats-preview-card-component',
-    image: '/assets/images/proyects/stats-card.png'
-  },
-  {
-    title: 'Landing Page',
-    description: 'Landing Page con diseño responsive del desafío de Frontend Mentor.',
-    tags: ['HTML', 'CSS Grid'],
-    link: 'https://xedsonruizx.github.io/Lading-Single-Section/',
-    repo: 'https://github.com/xedsonruizx/Lading-Single-Section/tree/First-version',
-    image: '/assets/images/proyects/landing-page.png',
-    priority: 0
-  },
-  {
     title: 'Asesorias - en desarrollo',
     description: 'Proyecto en desarrollo. Aplicación web para gestionar asesorías, administracion de usuarios, roles de usuario, formularios dinamicos, biblioteca, preguntas frecuentes y posts.',
     tags: ['Vue js', 'Php', 'Laravel'],
@@ -87,88 +7,48 @@ export const projects = [
     repo: 'https://github.com/xedsonruizx/Asesoria-YG/tree/Inicio-de-proyecto-laravel',
     priority: 1
   },
+  {
+    title: 'GesInVet — Web',
+    description: 'Sistema web de gestión veterinaria. Permite administrar fichas de pacientes, atenciones médicas, inventario de productos y un dashboard con métricas clave.',
+    tags: ['Next.js 15+', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'Node.js'],
+    image: '/assets/images/proyects/GesInVet/web/dashboard.png',
+    images: [
+      '/assets/images/proyects/GesInVet/web/dashboard.png',
+      '/assets/images/proyects/GesInVet/web/atenciones.png',
+      '/assets/images/proyects/GesInVet/web/detalle atencion.png',
+      '/assets/images/proyects/GesInVet/web/productos.png',
+      '/assets/images/proyects/GesInVet/web/Screenshot_1.png',
+    ],
+    features: [
+      'Dashboard con métricas y resumen de actividad',
+      'Módulo de atenciones y detalle clínico',
+      'Gestión de inventario y productos',
+      'Listado y búsqueda de pacientes',
+    ],
+    priority: 3
+  },
+  {
+    title: 'GesInVet — Mobile',
+    description: 'Versión móvil del sistema veterinario GesInVet. Diseñada para consultas rápidas en terreno: pacientes, inventario, consultas e información del sistema.',
+    tags: ['React Native', 'Expo', 'TypeScript', 'API', 'Android', 'iOS'],
+    image: '/assets/images/proyects/GesInVet/mobile/dashboard_mov.png',
+    images: [
+      '/assets/images/proyects/GesInVet/mobile/dashboard_mov.png',
+      '/assets/images/proyects/GesInVet/mobile/pacientes_mov.png',
+      '/assets/images/proyects/GesInVet/mobile/consultas_mov.png',
+      '/assets/images/proyects/GesInVet/mobile/Inventario_mov.png',
+      '/assets/images/proyects/GesInVet/mobile/info.png',
+    ],
+    features: [
+      'Dashboard móvil con vista de actividad',
+      'Consultas y registro de pacientes',
+      'Control de inventario desde el móvil',
+      'Información y ajustes del sistema',
+    ],
+    priority: 2
+  },
 ];
 export const projects_en = [
-  {
-    title: 'QR challenge HTML + CSS',
-    description: 'QR code component built with HTML and CSS, following a Frontend Mentor challenge.',
-    tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/QrChallenge/',
-    repo: 'https://github.com/xedsonruizx/QrChallenge/tree/QR',
-    image: '/assets/images/proyects/qr.png',
-    priority: 0
-  },
-  {
-    title: 'Card Product',
-    description: 'Vanilla JavaScript carousel with basic controls and animation.',
-    tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/Product-preview-card-component',
-    repo: 'https://github.com/xedsonruizx/Product-preview-card-component"',
-    image: '/assets/images/proyects/secondChallenge.png',
-    priority: 0
-  },
-
-  {
-    title: 'Card Summary',
-    description: 'Results summary card from a Frontend Mentor challenge.',
-    tags: ['HTML', 'CSS', 'FontAwesome'],
-    link: 'https://xedsonruizx.github.io/results-summary-challenge-3/',
-    repo: 'https://github.com/xedsonruizx/results-summary-challenge-3',
-    image: '/assets/images/proyects/result-summary.png',
-    features: []
-  },
-  {
-    title: 'NTF Card with hover animation',
-    description: 'Frontend Mentor card with hover animation on the image.',
-    tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/NFT-preview-card-component/',
-    repo: 'https://github.com/xedsonruizx/NFT-preview-card-component',
-    image: '/assets/images/proyects/ntf-card.png',
-    features: []
-  },
-  {
-    title: 'Order-Card',
-    description: 'Order summary card with hover animation on the button.',
-    tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/Order-summary-component/',
-    repo: 'https://github.com/xedsonruizx/Order-summary-component',
-    image: '/assets/images/proyects/music.png',
-    features: []
-  },
-  {
-    title: '3 Columns Card',
-    description: 'Responsive 3-column card from a Frontend Mentor challenge.',
-    tags: ['HTML', 'CSS Flex box'],
-    link: 'https://xedsonruizx.github.io/3-column-preview-card-component/',
-    repo: 'https://github.com/xedsonruizx/3-column-preview-card-component',
-    image: '/assets/images/proyects/3-cols-card.png',
-    features: []
-  },
-  {
-    title: 'Profile card with double background',
-    description: 'Profile card with two responsive backgrounds from a Frontend Mentor challenge.',
-    tags: ['HTML', 'CSS'],
-    link: 'https://xedsonruizx.github.io/Profile-card-component/',
-    repo: 'https://github.com/xedsonruizx/Profile-card-component',
-    image: '/assets/images/proyects/profile-card.png'
-  },
-  {
-    title: 'Grid card with order',
-    description: 'Stats card with two responsive backgrounds from a Frontend Mentor challenge.',
-    tags: ['HTML', 'CSS Grid'],
-    link: 'https://xedsonruizx.github.io/Stats-preview-card-component/',
-    repo: 'https://github.com/xedsonruizx/Stats-preview-card-component',
-    image: '/assets/images/proyects/stats-card.png'
-  },
-  {
-    title: 'Landing Page',
-    description: 'Responsive single-section landing page from a Frontend Mentor challenge.',
-    tags: ['HTML', 'CSS Grid'],
-    link: 'https://xedsonruizx.github.io/Lading-Single-Section/',
-    repo: 'https://github.com/xedsonruizx/Lading-Single-Section/tree/First-version',
-    image: '/assets/images/proyects/landing-page.png',
-    priority: 0
-  },
   {
     title: 'Asesorias - in development',
     description: 'Project in development. Web application to manage consultations, user administration, user roles, dynamic forms, library, FAQs, and posts.',
@@ -176,5 +56,45 @@ export const projects_en = [
     image: '/assets/images/proyects/vuesjs/asesorias yg.png',
     repo: 'https://github.com/xedsonruizx/Asesoria-YG/tree/Inicio-de-proyecto-laravel',
     priority: 1
+  },
+  {
+    title: 'GesInVet — Web',
+    description: 'Web-based veterinary management system. Manage patient records, medical appointments, product inventory, and a dashboard with key metrics.',
+    tags: ['Next.js 15+', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'Node.js'],
+    image: '/assets/images/proyects/GesInVet/web/dashboard.png',
+    images: [
+      '/assets/images/proyects/GesInVet/web/dashboard.png',
+      '/assets/images/proyects/GesInVet/web/atenciones.png',
+      '/assets/images/proyects/GesInVet/web/detalle atencion.png',
+      '/assets/images/proyects/GesInVet/web/productos.png',
+      '/assets/images/proyects/GesInVet/web/Screenshot_1.png',
+    ],
+    features: [
+      'Dashboard with metrics and activity summary',
+      'Medical appointments and clinical detail module',
+      'Product inventory management',
+      'Patient search and listing',
+    ],
+    priority: 3
+  },
+  {
+    title: 'GesInVet — Mobile',
+    description: 'Mobile version of the GesInVet veterinary system. Designed for quick field access: patients, inventory, consultations, and system information.',
+    tags: ['React Native', 'Expo', 'TypeScript', 'API', 'Android', 'iOS'],
+    image: '/assets/images/proyects/GesInVet/mobile/dashboard_mov.png',
+    images: [
+      '/assets/images/proyects/GesInVet/mobile/dashboard_mov.png',
+      '/assets/images/proyects/GesInVet/mobile/pacientes_mov.png',
+      '/assets/images/proyects/GesInVet/mobile/consultas_mov.png',
+      '/assets/images/proyects/GesInVet/mobile/Inventario_mov.png',
+      '/assets/images/proyects/GesInVet/mobile/info.png',
+    ],
+    features: [
+      'Mobile dashboard with activity overview',
+      'Patient consultations and records',
+      'Inventory control on the go',
+      'System information and settings',
+    ],
+    priority: 2
   },
 ];

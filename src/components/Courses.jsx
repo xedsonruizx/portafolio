@@ -12,7 +12,10 @@ export default function Courses() {
   return (
     <>
       <section id="courses" className="section container">
-        <h2 className="sectionTitle">{t('courses.title')}</h2>
+        <h2 className="sectionTitle">
+          <span className="sectionNum">05.</span>
+          {t('courses.title')}
+        </h2>
         <div className="tableWrap">
           <table className="projectsTable">
             <thead>
@@ -24,8 +27,8 @@ export default function Courses() {
               </tr>
             </thead>
             <tbody>
-              {coursesData.map((course) => (
-                <tr key={course.title}>
+              {coursesData.map((course, i) => (
+                <tr key={i}>
                   <td>{course.title}</td>
                   <td>{course.issuer}</td>
                   <td>{course.year}</td>
