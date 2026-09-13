@@ -11,6 +11,7 @@ const translations = {
       experience: 'Experience',
       skills: 'Skills',
       projects: 'Projects',
+      caseStudy: 'Case Study',
       contact: 'Contact',
     },
     header: { languageSwitch: 'ES/EN' },
@@ -33,6 +34,18 @@ const translations = {
       actions: { demo: 'Demo', code: 'Code' },
     },
     pagination: { prev: 'Previous', next: 'Next', goToPage: 'Go to page' },
+    caseStudy: {
+      title: 'Case Study',
+      subtitle: 'A closer look at my most challenging project, from problem to solution.',
+      badge: 'Featured Project',
+      challengeLabel: 'Main Challenge',
+      solutionLabel: 'Proposed Solution',
+      toolsLabel: 'Technical Tools',
+      learningsLabel: 'Key Learnings',
+      metricsLabel: 'Impact Metrics',
+      skillsLabel: 'Technical Skills Applied',
+      justificationLabel: 'Why I Chose This Project',
+    },
   },
   es: {
     nav: {
@@ -44,6 +57,7 @@ const translations = {
       experience: 'Experiencia',
       skills: 'Habilidades',
       projects: 'Proyectos',
+      caseStudy: 'Caso de Estudio',
       contact: 'Contacto',
     },
     header: { languageSwitch: 'ES/EN' },
@@ -66,6 +80,18 @@ const translations = {
       actions: { demo: 'Demo', code: 'Código' },
     },
     pagination: { prev: 'Anterior', next: 'Siguiente', goToPage: 'Ir a la página' },
+    caseStudy: {
+      title: 'Caso de Estudio',
+      subtitle: 'Una mirada en profundidad a mi proyecto más desafiante, desde el problema hasta la solución.',
+      badge: 'Proyecto Destacado',
+      challengeLabel: 'Desafío Principal',
+      solutionLabel: 'Solución Propuesta',
+      toolsLabel: 'Herramientas Técnicas',
+      learningsLabel: 'Principales Aprendizajes',
+      metricsLabel: 'Métricas de Impacto',
+      skillsLabel: 'Habilidades Técnicas Aplicadas',
+      justificationLabel: 'Por Qué Elegí Este Proyecto',
+    },
   },
 };
 

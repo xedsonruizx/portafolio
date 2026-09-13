@@ -7,6 +7,7 @@ import { FiPhone, FiMail, FiLinkedin, FiGithub, FiDownload } from 'react-icons/f
 import { SiHackerrank } from 'react-icons/si';
 import Projects from '../components/Projects';
 import Courses from '../components/Courses';
+import CaseStudy from '../components/CaseStudy';
 import TypingText from '../components/TypingText';
 import { useI18n } from '../i18n';
 import { useReveal } from '../hooks/useReveal';
@@ -190,10 +191,13 @@ export default function Home() {
         {/* ── PROJECTS ─────────────────────────────── */}
         <Projects />
 
+        {/* ── CASE STUDY ───────────────────────────── */}
+        <CaseStudy />
+
         {/* ── CONTACT ──────────────────────────────── */}
         <section id="contact" className="section container">
           <h2 className="sectionTitle reveal">
-            <span className="sectionNum">06.</span>
+            <span className="sectionNum">08.</span>
             {t('contact.title')}
           </h2>
           <p className="contactLead reveal" style={{ '--reveal-delay': '80ms' }}>

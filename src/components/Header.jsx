@@ -17,6 +17,7 @@ export default function Header() {
     { id: 'skills',          label: t('nav.skills') || 'Skills' },
     { id: 'certifications',  label: t('nav.certifications') },
     { id: 'projects',        label: t('nav.projects') },
+    { id: 'case-study',      label: t('nav.caseStudy') },
     { id: 'contact',         label: t('nav.contact') },
   ];
 
