@@ -150,6 +150,7 @@ main { padding-top: 64px; }
 .siteNav {
   display: none;
 }
+.siteNavDesktop { display: none; }
 .siteNav[data-open="true"] {
   display: block;
 }
@@ -245,11 +246,12 @@ main { padding-top: 64px; }
   backdrop-filter: blur(3px);
 }
 
-/* Mobile nav — slide-in panel */
+/* Mobile nav — slide-in panel (rendered outside <header> so the header's
+   backdrop-filter doesn't turn it into a containing block for this fixed panel) */
 @media (max-width: 767px) {
   .menuButton { display: inline-flex; }
 
-  .siteNav {
+  .siteNavMobile {
     display: none;
     position: fixed;
     top: 64px;
@@ -264,13 +266,13 @@ main { padding-top: 64px; }
     z-index: 40;
     animation: slideIn 0.22s var(--ease);
   }
-  .siteNav[data-open="true"] {
+  .siteNavMobile[data-open="true"] {
     display: block;
   }
-  .siteNavList {
+  .siteNavMobile .siteNavList {
     gap: 6px;
   }
-  .siteNavLink {
+  .siteNavMobile .siteNavLink {
     font-size: 15px;
     padding: 12px 16px;
   }
@@ -278,7 +280,7 @@ main { padding-top: 64px; }
 
 /* Desktop nav — inline */
 @media (min-width: 768px) {
-  .siteNav {
+  .siteNavDesktop {
     display: block;
     position: static;
     width: auto;
@@ -288,12 +290,13 @@ main { padding-top: 64px; }
     box-shadow: none;
     animation: none;
   }
-  .siteNavList {
+  .siteNavMobile { display: none !important; }
+  .siteNavDesktop .siteNavList {
     flex-direction: row;
     gap: 2px;
   }
-  .siteNavLink { padding: 8px 12px; }
-  .siteNavNum { display: none; }
+  .siteNavDesktop .siteNavLink { padding: 8px 12px; }
+  .siteNavDesktop .siteNavNum { display: none; }
   .menuOverlay { display: none; }
 }
 
@@ -572,7 +575,7 @@ main { padding-top: 64px; }
 
 .metricsGrid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   margin-bottom: 32px;
 }
@@ -603,8 +606,7 @@ main { padding-top: 64px; }
   line-height: 1.5;
 }
 
-@media (max-width: 1000px) { .metricsGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 600px)  { .metricsGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px)  { .metricsGrid { grid-template-columns: repeat(1, minmax(0, 1fr)); } }
 
 /* ============================================================
    ABOUT

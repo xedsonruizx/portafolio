@@ -22,6 +22,7 @@ export const certifications = [
     issuer: 'Salesforce',
     year: '2024',
     pdf: '/assets/files/certifications/salesforce-cloud-consultant.pdf',
+    hidden: true,
   },
   {
     title: 'Salesforce Administrator I',
@@ -61,6 +62,7 @@ export const certifications_en = [
     issuer: 'Salesforce',
     year: '2024',
     pdf: '/assets/files/certifications/salesforce-cloud-consultant.pdf',
+    hidden: true,
   },
   {
     title: 'Salesforce Administrator I',

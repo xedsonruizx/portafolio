@@ -88,12 +88,55 @@ export default function Header() {
   };
 
   return (
-    <header className={`siteHeader${scrolled ? ' scrolled' : ''}`}>
-      <a href="#hero" className="brand" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-        Edson <span>Ruiz</span>
-      </a>
+    <>
+      <header className={`siteHeader${scrolled ? ' scrolled' : ''}`}>
+        <a href="#hero" className="brand" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+          Edson <span>Ruiz</span>
+        </a>
 
-      <nav id="site-nav" className="siteNav" data-open={open} ref={navRef}>
+        {/* Desktop nav renders inline; on mobile this is hidden and the fixed panel below takes over */}
+        <nav className="siteNav siteNavDesktop">
+          <ul className="siteNavList">
+            {links.map((l, i) => (
+              <li key={l.id}>
+                <button
+                  className={`siteNavLink${activeSection === l.id ? ' isActive' : ''}`}
+                  onClick={() => handleNav(l.id)}
+                >
+                  <span className="siteNavNum">0{i + 1}.</span>
+                  {l.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="headerRight">
+          <button
+            className="langSwitch"
+            onClick={toggleLang}
+            aria-label="Toggle language"
+            title="Toggle language"
+          >
+            {lang.toUpperCase()}
+          </button>
+          <button
+            className="menuButton"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="site-nav"
+            onClick={() => setOpen(!open)}
+            ref={btnRef}
+          >
+            {open ? <FiX className="menuIcon" /> : <FiMenu className="menuIcon" />}
+          </button>
+        </div>
+      </header>
+
+      {/* Rendered outside <header> so backdrop-filter on the header doesn't turn it into a
+          containing block for these fixed-position elements (which would shrink them to the
+          header's own box instead of the full viewport). */}
+      <nav id="site-nav" className="siteNav siteNavMobile" data-open={open} ref={navRef}>
         <ul className="siteNavList">
           {links.map((l, i) => (
             <li key={l.id}>
@@ -109,28 +152,7 @@ export default function Header() {
         </ul>
       </nav>
 
-      <div className="headerRight">
-        <button
-          className="langSwitch"
-          onClick={toggleLang}
-          aria-label="Toggle language"
-          title="Toggle language"
-        >
-          {lang.toUpperCase()}
-        </button>
-        <button
-          className="menuButton"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          aria-controls="site-nav"
-          onClick={() => setOpen(!open)}
-          ref={btnRef}
-        >
-          {open ? <FiX className="menuIcon" /> : <FiMenu className="menuIcon" />}
-        </button>
-      </div>
-
       {open && <div className="menuOverlay" onClick={() => setOpen(false)} />}
-    </header>
+    </>
   );
 }

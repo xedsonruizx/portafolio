@@ -3,7 +3,7 @@ import { education, education_en } from '../data/education';
 import { certifications, certifications_en } from '../data/certifications';
 import { experience, experience_en } from '../data/experience';
 import React from 'react';
-import { FiPhone, FiMail, FiLinkedin, FiGithub, FiDownload } from 'react-icons/fi';
+import { FiPhone, FiMail, FiLinkedin, FiGithub } from 'react-icons/fi';
 import { SiHackerrank } from 'react-icons/si';
 import Projects from '../components/Projects';
 import Courses from '../components/Courses';
@@ -54,14 +54,6 @@ export default function Home() {
             <div className="heroCtas">
               <a href="#projects" className="btn primary">{t('hero.cta')}</a>
               <a href="#contact"  className="btn secondary">{t('hero.ctaSecondary')}</a>
-              <a
-                href="/assets/files/CV_Edson_Ruiz_ESP.pdf"
-                download
-                className="btn secondary"
-              >
-                <FiDownload style={{ width: 16, height: 16 }} />
-                {t('hero.downloadCv')}
-              </a>
             </div>
           </div>
         </section>
@@ -156,7 +148,7 @@ export default function Home() {
             {t('certifications.title')}
           </h2>
           <div className="grid grid-2">
-            {certData.map((cert, i) => (
+            {certData.filter((cert) => !cert.hidden).map((cert, i) => (
               <article
                 key={i}
                 className="card reveal"

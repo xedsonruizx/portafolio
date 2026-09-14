@@ -1,6 +1,6 @@
 export const projects = [
   {
-    title: 'SpringEduManager',
+    title: 'Gestor de Alumnos',
     description: 'Sistema web de gestión académica desarrollado con Spring Boot. Permite administrar alumnos con ficha completa, autenticación de usuarios y control de acceso por roles.',
     tags: ['Spring Boot', 'Java 21', 'Spring Security', 'Thymeleaf', 'MySQL', 'JPA/Hibernate'],
     image: '/assets/images/proyects/java/Education/edu home.png',
@@ -107,7 +107,7 @@ export const projects = [
 ];
 export const projects_en = [
   {
-    title: 'SpringEduManager',
+    title: 'Student Manager',
     description: 'Academic management web system built with Spring Boot. Manages students with full profiles, user authentication, and role-based access control.',
     tags: ['Spring Boot', 'Java 21', 'Spring Security', 'Thymeleaf', 'MySQL', 'JPA/Hibernate'],
     image: '/assets/images/proyects/java/Education/edu home.png',
