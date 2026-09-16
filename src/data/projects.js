@@ -16,6 +16,7 @@ export const projects = [
       'Autenticación con registro y contraseñas cifradas (BCrypt)',
       'Control de acceso por roles (ADMIN / USER)',
     ],
+    repo: 'https://github.com/xedsonruizx/SpringEduManager',
     priority: 6
   },
   {
@@ -35,6 +36,7 @@ export const projects = [
       'Filtro de acceso a funciones según permisos',
       'Persistencia en base de datos relacional',
     ],
+    repo: 'https://github.com/xedsonruizx/BibliotecaDigital',
     priority: 5
   },
   {
@@ -54,6 +56,7 @@ export const projects = [
       'Depósitos y envío de dinero entre contactos',
       'Historial de transacciones con filtros y CRUD de contactos',
     ],
+    repo: 'https://github.com/xedsonruizx/AlkeWallet',
     priority: 4
   },
   {
@@ -123,6 +126,7 @@ export const projects_en = [
       'Authentication with registration and encrypted passwords (BCrypt)',
       'Role-based access control (ADMIN / USER)',
     ],
+    repo: 'https://github.com/xedsonruizx/SpringEduManager',
     priority: 6
   },
   {
@@ -142,6 +146,7 @@ export const projects_en = [
       'Access filtering based on permissions',
       'Persistence in a relational database',
     ],
+    repo: 'https://github.com/xedsonruizx/BibliotecaDigital',
     priority: 5
   },
   {
@@ -161,6 +166,7 @@ export const projects_en = [
       'Deposits and money transfers between contacts',
       'Transaction history with filters and contact CRUD',
     ],
+    repo: 'https://github.com/xedsonruizx/AlkeWallet',
     priority: 4
   },
   {
